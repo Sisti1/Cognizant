@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { 
+import {
   FormControl,
   FormGroup,
   Validators,
@@ -7,9 +7,8 @@ import {
 } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { Users } from '../users';
-import {Router} from '@angular/router'
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-// import {AuthService} from '../authstatus.service'
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -21,10 +20,10 @@ export class SignupComponent {
   constructor(
     private builder: FormBuilder,
     private signupService: LoginService,
-    private router:Router,
-    private cookie:CookieService,
-    // private authService:AuthService
-  ) {}
+    private router: Router,
+    private cookie: CookieService
+  ) // private authService:AuthService
+  {}
 
   //using Form Builder
 
@@ -34,8 +33,8 @@ export class SignupComponent {
 
       lastname: ['', Validators.required],
 
-      mobileno:['',Validators.required],
-      username:['', Validators.required],
+      mobileno: ['', Validators.required],
+      username: ['', Validators.required],
 
       email: ['', [Validators.required, Validators.email]],
 
@@ -47,12 +46,12 @@ export class SignupComponent {
 
   onSubmit(User: Users) {
     this.signupService.signUp(User).subscribe((data) => {
-      if(data){
-        this.cookie.set('user',JSON.stringify(data));
+      if (data) {
+        this.cookie.set('user', JSON.stringify(data));
         console.log(data);
-        const dat = data as Users
-        this.cookie.set('jwt',dat.token);
-        this.router.navigate(['/'])
+        const dat = data as Users; // typecasting the data to the users interface
+        // this.cookie.set('jwt', dat.token);
+        this.router.navigate(['/']);
         // this.authService.isAuthenticated=true
       }
       console.log(data);

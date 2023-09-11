@@ -5,7 +5,6 @@ import { GuestService } from '../guest.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Users } from '../users';
-// import { AuthService } from '../authstatus.service';
 
 @Component({
   selector: 'app-new-guest',
@@ -19,7 +18,6 @@ export class NewGuestComponent {
   constructor(
     private guestService: GuestService,
     private cookieService: CookieService,
-    // private authService: AuthService,
     private router: Router
   ) {}
 

@@ -16,7 +16,6 @@ export class GuestListComponent {
   constructor(
     private guestService: GuestService,
     private cookieService: CookieService,
-    // private authservice: AuthService,
     private router: Router
   ) {}
 
@@ -25,6 +24,7 @@ export class GuestListComponent {
     const val = JSON.parse(cookieValue) as Users;
     this.id = val.data.user._id;
     this.guestService.getGuest(this.id).subscribe((response) => {
+      if(response){
       this.guests = response.data.guests.map((data: any) => ({
         Sno: data.Sno || 0, // Use 0 as default value if Sno is missing
         name: data.name || '',
@@ -33,7 +33,7 @@ export class GuestListComponent {
         phone: data.phone || 0,
         _id: data._id || '',
       }));
-    });
+    }});
   }
 
   onUpdate(id: any) {

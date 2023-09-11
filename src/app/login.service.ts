@@ -16,6 +16,10 @@ export class LoginService {
   signUp(data: Users): Observable<Users> {
     return this.http.post<any>('http://43.205.208.194:5000/api/auth/signup',data);
   }
+
+  logout(data:any):Observable<any>{
+    return this.http.get('http://43.205.208.194:5000/api/auth/logout')
+  }
     
 
 }

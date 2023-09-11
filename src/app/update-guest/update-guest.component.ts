@@ -31,7 +31,7 @@ export class UpdateGuestComponent {
   }
 
   onUpdate(guest: Guest) {
-    console.log('THIS IS THE GUEST' + this.guest);
+    // console.log('THIS IS THE GUEST' + this.guest);
     this.guestService
       .updateGuest(guest, this.id, this.route.snapshot.params['id'])
       .subscribe((data) => {

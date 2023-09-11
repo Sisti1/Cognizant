@@ -40,9 +40,8 @@ export class LoginComponent {
     this.signupService.login(data).subscribe((data) => {
       if (data) {
         this.cookie.set('user',JSON.stringify(data))
-        // this.cookie.set('jwt',JSON.stringify(this.authService.sendtoken));
-        const dat = data as Users
-        this.cookie.set('jwt',dat.token);
+        const dat = data as Users //typecasting that string data into user interface
+        // this.cookie.set('jwt',dat.token);
         this.router.navigate(['/']);
         // this.authService.isAuthenticated=true
       }
